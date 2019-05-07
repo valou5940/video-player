@@ -25,7 +25,7 @@ export class ProgressBar extends React.Component {
     };
 
     return (
-      <div className="bar col-md-10">
+      <div className="bar col-md-10 col-xs-10">
         <input
           type="range"
           min="0"

@@ -66,7 +66,7 @@ export class VideoComponent extends React.Component {
           </video>
         </div>
         <div className="controls row">
-          <div className="col-md-2">
+          <div className="col-md-2 col-xs-2">
             <button onClick={this.handlePlayPause}>
               {this.state.played ? pauseButton : playButton}
             </button>
