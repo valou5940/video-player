@@ -1,20 +1,14 @@
 import React from "react";
-import { ETIME } from "constants";
 
 export class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cursorTime: 0,
       progressBarWidth: 0
     };
 
     this.setTime = this.setTime.bind(this);
   }
-
-  //   componentWillReceiveProps() {
-  //     this.setState({ progressBarWidth: this.props.progress });
-  //   }
 
   setTime(evt) {
     this.setState({
@@ -38,6 +32,7 @@ export class ProgressBar extends React.Component {
           max={maxWidth}
           style={barStyle}
           onChange={this.setTime}
+          value={this.props.progress}
         />
         {this.props.timer}
       </div>
