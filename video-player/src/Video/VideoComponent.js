@@ -41,6 +41,7 @@ export class VideoComponent extends React.Component {
     this.setState({
       currentTime: currentPos
     });
+    this.refs.vidRef.currentTime = currentPos;
   }
 
   render() {
@@ -52,26 +53,33 @@ export class VideoComponent extends React.Component {
       <i className="fas fa-pause-circle fa-4x" style={playStyle} />
     );
     return (
-      <div className="container">
-        <video
-          ref="vidRef"
-          onTimeUpdate={this.getCurrentTime}
-          onLoadedMetadata={this.getDuration}
-        >
-          <source src={source} type="video/mp4" />
-        </video>
-
-        <div className="controls">
-          <button onClick={this.handlePlayPause}>
-            {this.state.played ? pauseButton : playButton}
-          </button>
-          <span>
-            {this.state.currentTime} : {this.state.duration}
-          </span>
+      <div className="container" style={{ maxWidth: "800px", width: "100" }}>
+        <div className="row">
+          <video
+            ref="vidRef"
+            onTimeUpdate={this.getCurrentTime}
+            onLoadedMetadata={this.getDuration}
+            width={800}
+            height={600}
+          >
+            <source src={source} type="video/mp4" />
+          </video>
+        </div>
+        <div className="controls row">
+          <div className="col-md-2">
+            <button onClick={this.handlePlayPause}>
+              {this.state.played ? pauseButton : playButton}
+            </button>
+          </div>
           <ProgressBar
             maxWidth={this.state.duration}
             progress={this.state.currentTime}
             onSelectTime={this.selectTime}
+            timer={
+              <p>
+                {this.state.currentTime} : {this.state.duration} s
+              </p>
+            }
           />
         </div>
       </div>

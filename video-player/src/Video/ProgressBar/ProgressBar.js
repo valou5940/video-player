@@ -1,4 +1,5 @@
 import React from "react";
+import { ETIME } from "constants";
 
 export class ProgressBar extends React.Component {
   constructor(props) {
@@ -11,41 +12,34 @@ export class ProgressBar extends React.Component {
     this.setTime = this.setTime.bind(this);
   }
 
-  componentWillReceiveProps() {
-    this.setState({ progressBarWidth: this.props.progress });
-  }
+  //   componentWillReceiveProps() {
+  //     this.setState({ progressBarWidth: this.props.progress });
+  //   }
 
   setTime(evt) {
-    const x = evt.clientX - this.props.maxWidth;
-    console.log(x);
-
     this.setState({
-      progressBarWidth: Math.round(x / 10)
+      progressBarWidth: Math.round(evt.target.value)
     });
 
-    this.props.onSelectTime(Math.round(x / 10));
+    this.props.onSelectTime(Math.round(evt.target.value));
   }
 
   render() {
     const maxWidth = this.props.maxWidth;
-    // const progress = this.props.progress;
-    // const totalTime = maxWidth * 10;/
     const barStyle = {
-      backgroundColor: "teal",
-      border: "2px solid black",
-      height: "20px",
       width: maxWidth * 10
-    };
-    const progressStyle = {
-      backgroundColor: "blue",
-      borderRight: "2px solid black",
-      height: "15px",
-      width: this.state.progressBarWidth * 10
     };
 
     return (
-      <div className="bar" style={barStyle} onClick={this.setTime}>
-        <div style={progressStyle} />
+      <div className="bar col-md-10">
+        <input
+          type="range"
+          min="0"
+          max={maxWidth}
+          style={barStyle}
+          onChange={this.setTime}
+        />
+        {this.props.timer}
       </div>
     );
   }
