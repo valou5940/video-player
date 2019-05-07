@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/valou5940/valou5940.github.io/static/css/main.584f321a.chunk.css",
-    "main.js": "/valou5940/valou5940.github.io/static/js/main.0f2e3e06.chunk.js",
-    "main.js.map": "/valou5940/valou5940.github.io/static/js/main.0f2e3e06.chunk.js.map",
-    "runtime~main.js": "/valou5940/valou5940.github.io/static/js/runtime~main.f73827fe.js",
-    "runtime~main.js.map": "/valou5940/valou5940.github.io/static/js/runtime~main.f73827fe.js.map",
-    "static/css/2.22a7d4ef.chunk.css": "/valou5940/valou5940.github.io/static/css/2.22a7d4ef.chunk.css",
-    "static/js/2.4bb4a5df.chunk.js": "/valou5940/valou5940.github.io/static/js/2.4bb4a5df.chunk.js",
-    "static/js/2.4bb4a5df.chunk.js.map": "/valou5940/valou5940.github.io/static/js/2.4bb4a5df.chunk.js.map",
-    "index.html": "/valou5940/valou5940.github.io/index.html",
-    "precache-manifest.eb4c459ba04b762b6b1a780c8d1853eb.js": "/valou5940/valou5940.github.io/precache-manifest.eb4c459ba04b762b6b1a780c8d1853eb.js",
-    "service-worker.js": "/valou5940/valou5940.github.io/service-worker.js",
-    "static/css/2.22a7d4ef.chunk.css.map": "/valou5940/valou5940.github.io/static/css/2.22a7d4ef.chunk.css.map",
-    "static/css/main.584f321a.chunk.css.map": "/valou5940/valou5940.github.io/static/css/main.584f321a.chunk.css.map",
-    "static/media/big_buck_bunny.mp4": "/valou5940/valou5940.github.io/static/media/big_buck_bunny.f13004ee.mp4"
+    "main.css": "/video-player/static/css/main.584f321a.chunk.css",
+    "main.js": "/video-player/static/js/main.22594f25.chunk.js",
+    "main.js.map": "/video-player/static/js/main.22594f25.chunk.js.map",
+    "runtime~main.js": "/video-player/static/js/runtime~main.59c8bac1.js",
+    "runtime~main.js.map": "/video-player/static/js/runtime~main.59c8bac1.js.map",
+    "static/css/2.22a7d4ef.chunk.css": "/video-player/static/css/2.22a7d4ef.chunk.css",
+    "static/js/2.4bb4a5df.chunk.js": "/video-player/static/js/2.4bb4a5df.chunk.js",
+    "static/js/2.4bb4a5df.chunk.js.map": "/video-player/static/js/2.4bb4a5df.chunk.js.map",
+    "index.html": "/video-player/index.html",
+    "precache-manifest.66b512e8c89b6c894c633bf06892ca7a.js": "/video-player/precache-manifest.66b512e8c89b6c894c633bf06892ca7a.js",
+    "service-worker.js": "/video-player/service-worker.js",
+    "static/css/2.22a7d4ef.chunk.css.map": "/video-player/static/css/2.22a7d4ef.chunk.css.map",
+    "static/css/main.584f321a.chunk.css.map": "/video-player/static/css/main.584f321a.chunk.css.map",
+    "static/media/big_buck_bunny.mp4": "/video-player/static/media/big_buck_bunny.f13004ee.mp4"
   }
 }
