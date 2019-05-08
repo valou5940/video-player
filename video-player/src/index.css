@@ -14,8 +14,9 @@ code {
 }
 
 .controls {
-  height: 68px;
-  background-color: rgb(114, 41, 209);
+  height: 72px;
+  /* background-color: rgb(114, 41, 209); */
+  border: 2px solid black;
 }
 
 .container-fluid {
@@ -27,6 +28,7 @@ button {
   color: rgb(114, 41, 209);
   padding: 0 !important;
   width: 100%;
+  border-right: 1px solid black;
 }
 
 .play-button {
@@ -45,7 +47,7 @@ button {
 input[type="range"] {
   -webkit-appearance: none;
   width: 90%;
-  margin-top: 23px;
+  margin-top: 25px;
 }
 input[type="range"]:focus {
   outline: none;
