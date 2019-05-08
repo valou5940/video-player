@@ -5,20 +5,28 @@ export class ProgressBarComponent extends React.Component {
     super(props);
 
     this.setTime = this.setTime.bind(this);
+    // this.shouldStop.bind(this);
+  }
+
+  // prevent from reloading video automatically after being stop
+  componentDidUpdate(prevProps) {
+    if (
+      !this.props.played &&
+      prevProps.progress === 0 &&
+      this.props.progress > prevProps.progress
+    ) {
+      this.props.onSelectTime(0);
+    }
   }
 
   // set the current time to the parent 'VideoComponent'
   setTime(evt) {
-    if (evt) {
-      this.props.onSelectTime(Math.round(evt.target.value));
-    }
+    this.props.onSelectTime(Math.round(evt.target.value));
   }
 
   render() {
     const maxWidth = this.props.maxWidth;
-    // const barStyle = {
-    //   width: maxWidth * 10
-    // };
+
     return (
       <div className="col-sm-12">
         <input

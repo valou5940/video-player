@@ -8,7 +8,7 @@ export class StopComponent extends React.Component {
   }
 
   handleStop() {
-    this.props.onStopVideo("stop");
+    this.props.onStopVideo(!this.props.played);
   }
 
   render() {

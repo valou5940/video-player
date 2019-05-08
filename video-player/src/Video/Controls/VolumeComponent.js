@@ -27,7 +27,6 @@ export class VolumeComponent extends React.Component {
   //change video sound volume in parent component
   handleVolume(evt) {
     if (evt.target.value <= 0) {
-      console.log("muted");
       this.setState({
         muted: true,
         showVolumeSlider: false

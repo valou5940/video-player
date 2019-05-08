@@ -12,7 +12,7 @@ export class VideoComponent extends React.Component {
     this.state = {
       repeat: false,
       played: false,
-      stopped: true,
+      stopProgress: false,
       duration: 0,
       currentTime: 0,
       volume: 50
@@ -37,6 +37,7 @@ export class VideoComponent extends React.Component {
   //when video ends, reset all states
   endVideo() {
     this.setState({
+      stopProgress: true,
       currentTime: 0,
       played: false
     });
@@ -86,13 +87,11 @@ export class VideoComponent extends React.Component {
     this.refs.vidRef.volume = volume;
   }
 
+  // stop playing video
   stopVideo(stopped) {
-    if (stopped === "stop") {
+    if (stopped === true) {
+      this.endVideo();
       this.refs.vidRef.pause();
-      this.setState({
-        currentTime: 0,
-        played: false
-      });
     }
   }
 
@@ -113,6 +112,7 @@ export class VideoComponent extends React.Component {
         </div>
         <div className="col-md-11 timer">
           <ProgressBarComponent
+            played={this.state.played}
             maxWidth={this.state.duration}
             progress={this.state.currentTime}
             onSelectTime={this.selectTime.bind(this)}
@@ -131,7 +131,10 @@ export class VideoComponent extends React.Component {
             />
           </div>
           <div className="col-sm-1 stop-button">
-            <StopComponent onStopVideo={this.stopVideo.bind(this)} />
+            <StopComponent
+              stopped={this.state.played}
+              onStopVideo={this.stopVideo.bind(this)}
+            />
           </div>
           <div className="col-sm-1 repeat-button">
             <RepeatComponent
