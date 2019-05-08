@@ -5,7 +5,8 @@ import { VideoComponent } from "./Video/VideoComponent";
 function App() {
   return (
     <div className="App">
-      <h1>Simple Video Player</h1>
+      <h1 style={{ textAlign: "center" }}>Simple Video Player</h1>
+      <hr />
       <VideoComponent />
     </div>
   );

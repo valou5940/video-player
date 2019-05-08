@@ -21,7 +21,7 @@ export class ProgressBar extends React.Component {
     };
 
     return (
-      <div className="bar col-md-10 col-xs-10">
+      <div className="col-sm-11 timer">
         <input
           type="range"
           min="0"
@@ -30,7 +30,7 @@ export class ProgressBar extends React.Component {
           onChange={this.setTime.bind(this)}
           value={this.props.progress}
         />
-        {this.props.timer}
+        <p>{this.props.timer}</p>
       </div>
     );
   }

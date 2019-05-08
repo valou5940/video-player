@@ -15,6 +15,7 @@ export class VideoComponent extends React.Component {
     this.getCurrentTime = this.getCurrentTime.bind(this);
     this.getDuration = this.getDuration.bind(this);
     this.selectTime = this.selectTime.bind(this);
+    this.endVideo = this.endVideo.bind(this);
   }
 
   // play or pause video when clicking the button
@@ -29,6 +30,14 @@ export class VideoComponent extends React.Component {
   getCurrentTime(evt) {
     this.setState({
       currentTime: Math.round(evt.target.currentTime)
+    });
+  }
+
+  //when video ends, reset all states
+  endVideo() {
+    this.setState({
+      currentTime: 0,
+      played: false
     });
   }
 
@@ -48,28 +57,24 @@ export class VideoComponent extends React.Component {
   }
 
   render() {
-    const playStyle = { color: "purple" };
-    const playButton = (
-      <i className="fas fa-play-circle fa-4x" style={playStyle} />
-    );
-    const pauseButton = (
-      <i className="fas fa-pause-circle fa-4x" style={playStyle} />
-    );
+    const playButton = <i className="fas fa-play-circle fa-4x" />;
+    const pauseButton = <i className="fas fa-pause-circle fa-4x" />;
     return (
-      <div className="container" style={{ maxWidth: "800px", width: "100" }}>
+      <div className="container-fluid">
         <div className="row">
           <video
             ref="vidRef"
             onTimeUpdate={this.getCurrentTime}
+            onEnded={this.endVideo}
             onLoadedMetadata={this.getDuration}
-            width={800}
+            width={"100%"}
             height={600}
           >
             <source src={source} type="video/mp4" />
           </video>
         </div>
-        <div className="controls row">
-          <div className="col-md-2 col-xs-2">
+        <div className="row controls">
+          <div className="col-sm-1 play-button">
             <button onClick={this.handlePlayPause}>
               {this.state.played ? pauseButton : playButton}
             </button>
@@ -79,9 +84,9 @@ export class VideoComponent extends React.Component {
             progress={this.state.currentTime}
             onSelectTime={this.selectTime.bind(this)}
             timer={
-              <p>
+              <span>
                 {this.state.currentTime} : {this.state.duration} s
-              </p>
+              </span>
             }
           />
         </div>
