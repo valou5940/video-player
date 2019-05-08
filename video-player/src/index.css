@@ -31,7 +31,8 @@ button {
   border-right: 1px solid black;
 }
 
-.play-button {
+.play-button,
+.repeat-button {
   padding: 0 !important;
 }
 
