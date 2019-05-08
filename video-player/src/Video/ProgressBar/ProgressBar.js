@@ -3,19 +3,15 @@ import React from "react";
 export class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   progressBarWidth: 0
-    // };
 
     this.setTime = this.setTime.bind(this);
   }
 
+  // set the current time to the parent 'VideoComponent'
   setTime(evt) {
-    // this.setState({
-    //   progressBarWidth: Math.round(evt.target.value)
-    // });
-
-    this.props.onSelectTime(Math.round(evt.target.value));
+    if (evt) {
+      this.props.onSelectTime(Math.round(evt.target.value));
+    }
   }
 
   render() {
@@ -31,7 +27,7 @@ export class ProgressBar extends React.Component {
           min="0"
           max={maxWidth}
           style={barStyle}
-          onChange={this.setTime}
+          onChange={this.setTime.bind(this)}
           value={this.props.progress}
         />
         {this.props.timer}

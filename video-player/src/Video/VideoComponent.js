@@ -17,6 +17,7 @@ export class VideoComponent extends React.Component {
     this.selectTime = this.selectTime.bind(this);
   }
 
+  // play or pause video when clicking the button
   handlePlayPause() {
     this.setState({
       played: !this.state.played
@@ -24,18 +25,21 @@ export class VideoComponent extends React.Component {
     this.state.played ? this.refs.vidRef.pause() : this.refs.vidRef.play();
   }
 
+  // get current video time
   getCurrentTime(evt) {
     this.setState({
       currentTime: Math.round(evt.target.currentTime)
     });
   }
 
+  // get full length of the video
   getDuration(evt) {
     this.setState({
       duration: Math.round(evt.target.duration)
     });
   }
 
+  // change current time when clicking the progressbar
   selectTime(currentPos) {
     this.setState({
       currentTime: currentPos
@@ -73,7 +77,7 @@ export class VideoComponent extends React.Component {
           <ProgressBar
             maxWidth={this.state.duration}
             progress={this.state.currentTime}
-            onSelectTime={this.selectTime}
+            onSelectTime={this.selectTime.bind(this)}
             timer={
               <p>
                 {this.state.currentTime} : {this.state.duration} s
