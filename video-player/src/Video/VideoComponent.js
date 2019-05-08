@@ -79,16 +79,18 @@ export class VideoComponent extends React.Component {
               {this.state.played ? pauseButton : playButton}
             </button>
           </div>
-          <ProgressBar
-            maxWidth={this.state.duration}
-            progress={this.state.currentTime}
-            onSelectTime={this.selectTime.bind(this)}
-            timer={
-              <span>
-                {this.state.currentTime} : {this.state.duration} s
-              </span>
-            }
-          />
+          <div className="col-md-11 timer">
+            <ProgressBar
+              maxWidth={this.state.duration}
+              progress={this.state.currentTime}
+              onSelectTime={this.selectTime.bind(this)}
+              timer={
+                <span>
+                  {this.state.currentTime} : {this.state.duration} s
+                </span>
+              }
+            />
+          </div>
         </div>
       </div>
     );

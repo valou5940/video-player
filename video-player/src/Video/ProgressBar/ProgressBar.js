@@ -16,17 +16,17 @@ export class ProgressBar extends React.Component {
 
   render() {
     const maxWidth = this.props.maxWidth;
-    const barStyle = {
-      width: maxWidth * 10
-    };
+    // const barStyle = {
+    //   width: maxWidth * 10
+    // };
 
     return (
-      <div className="col-sm-11 timer">
+      <div className="col-sm-12">
         <input
           type="range"
           min="0"
           max={maxWidth}
-          style={barStyle}
+          // style={barStyle}
           onChange={this.setTime.bind(this)}
           value={this.props.progress}
         />
