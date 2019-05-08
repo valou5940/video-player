@@ -1,6 +1,6 @@
 import React from "react";
 
-export class ProgressBar extends React.Component {
+export class ProgressBarComponent extends React.Component {
   constructor(props) {
     super(props);
 
