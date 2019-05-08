@@ -21,7 +21,6 @@ export class VideoComponent extends React.Component {
     this.setState({
       played: !this.state.played
     });
-
     this.state.played ? this.refs.vidRef.pause() : this.refs.vidRef.play();
   }
 

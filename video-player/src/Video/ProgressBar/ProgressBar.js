@@ -3,17 +3,17 @@ import React from "react";
 export class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      progressBarWidth: 0
-    };
+    // this.state = {
+    //   progressBarWidth: 0
+    // };
 
     this.setTime = this.setTime.bind(this);
   }
 
   setTime(evt) {
-    this.setState({
-      progressBarWidth: Math.round(evt.target.value)
-    });
+    // this.setState({
+    //   progressBarWidth: Math.round(evt.target.value)
+    // });
 
     this.props.onSelectTime(Math.round(evt.target.value));
   }
