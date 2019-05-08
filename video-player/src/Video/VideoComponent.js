@@ -4,6 +4,7 @@ import { ProgressBarComponent } from "./ProgressBar/ProgressBarComponent";
 import { PlayComponent } from "./Controls/PlayComponent";
 import { RepeatComponent } from "./Controls/RepeatComponent";
 import { VolumeComponent } from "./Controls/VolumeComponent";
+import { StopComponent } from "./Controls/StopComponent";
 
 export class VideoComponent extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export class VideoComponent extends React.Component {
     this.state = {
       repeat: false,
       played: false,
+      stopped: true,
       duration: 0,
       currentTime: 0,
       volume: 50
@@ -22,12 +24,13 @@ export class VideoComponent extends React.Component {
     this.getDuration = this.getDuration.bind(this);
     this.selectTime = this.selectTime.bind(this);
     this.endVideo = this.endVideo.bind(this);
+    this.stopVideo = this.stopVideo.bind(this);
   }
 
   // get current video time
   getCurrentTime(evt) {
     this.setState({
-      currentTime: Math.round(evt.target.currentTime)
+      currentTime: Math.floor(evt.target.currentTime * 100) / 100
     });
   }
 
@@ -83,6 +86,16 @@ export class VideoComponent extends React.Component {
     this.refs.vidRef.volume = volume;
   }
 
+  stopVideo(stopped) {
+    if (stopped === "stop") {
+      this.refs.vidRef.pause();
+      this.setState({
+        currentTime: 0,
+        played: false
+      });
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -98,12 +111,27 @@ export class VideoComponent extends React.Component {
             <source src={source} type="video/mp4" />
           </video>
         </div>
+        <div className="col-md-11 timer">
+          <ProgressBarComponent
+            maxWidth={this.state.duration}
+            progress={this.state.currentTime}
+            onSelectTime={this.selectTime.bind(this)}
+            timer={
+              <span>
+                {Math.round(this.state.currentTime)} : {this.state.duration} s
+              </span>
+            }
+          />
+        </div>
         <div className="row controls">
           <div className="col-sm-1 play-button">
             <PlayComponent
               played={this.state.played}
               onPlayPauseVideo={this.playPauseVideo.bind(this)}
             />
+          </div>
+          <div className="col-sm-1 stop-button">
+            <StopComponent onStopVideo={this.stopVideo.bind(this)} />
           </div>
           <div className="col-sm-1 repeat-button">
             <RepeatComponent
@@ -115,18 +143,6 @@ export class VideoComponent extends React.Component {
             <VolumeComponent
               onVolume={this.changeVolume.bind(this)}
               volume={this.state.volume}
-            />
-          </div>
-          <div className="col-md-11 timer">
-            <ProgressBarComponent
-              maxWidth={this.state.duration}
-              progress={this.state.currentTime}
-              onSelectTime={this.selectTime.bind(this)}
-              timer={
-                <span>
-                  {this.state.currentTime} : {this.state.duration} s
-                </span>
-              }
             />
           </div>
         </div>
