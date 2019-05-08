@@ -32,7 +32,8 @@ button {
 }
 
 .play-button,
-.repeat-button {
+.repeat-button,
+.volume-buton {
   padding: 0 !important;
 }
 

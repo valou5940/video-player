@@ -3,6 +3,7 @@ import source from "./big_buck_bunny.mp4";
 import { ProgressBarComponent } from "./ProgressBar/ProgressBarComponent";
 import { PlayComponent } from "./Controls/PlayComponent";
 import { RepeatComponent } from "./Controls/RepeatComponent";
+import { VolumeComponent } from "./Controls/VolumeComponent";
 
 export class VideoComponent extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export class VideoComponent extends React.Component {
       repeat: false,
       played: false,
       duration: 0,
-      currentTime: 0
+      currentTime: 0,
+      volume: 50
     };
 
     this.playPauseVideo = this.playPauseVideo.bind(this);
@@ -63,7 +65,6 @@ export class VideoComponent extends React.Component {
 
   // repeat video or not when it's finished
   repeatVideo(repeat) {
-    console.log(repeat);
     this.setState({
       repeat: repeat
     });
@@ -71,6 +72,15 @@ export class VideoComponent extends React.Component {
     this.state.repeat
       ? (this.refs.vidRef.loop = false)
       : (this.refs.vidRef.loop = true);
+  }
+
+  // change video  sound volume
+  changeVolume(volume) {
+    this.setState({
+      volume: volume
+    });
+
+    this.refs.vidRef.volume = volume;
   }
 
   render() {
@@ -99,6 +109,12 @@ export class VideoComponent extends React.Component {
             <RepeatComponent
               repeat={this.state.repeat}
               onRepeat={this.repeatVideo.bind(this)}
+            />
+          </div>
+          <div className="col-sm-1 volume-buton">
+            <VolumeComponent
+              onVolume={this.changeVolume.bind(this)}
+              volume={this.state.volume}
             />
           </div>
           <div className="col-md-11 timer">
