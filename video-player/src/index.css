@@ -13,10 +13,16 @@ code {
     monospace;
 }
 
-.controls {
+.wrapper {
+  text-align: center;
+}
+
+.controls,
+.bar {
   height: 72px;
   /* background-color: rgb(114, 41, 209); */
   border: 2px solid black;
+  margin-bottom: 2px;
 }
 
 .container-fluid {
@@ -33,7 +39,8 @@ button {
 
 .play-button,
 .repeat-button,
-.volume-buton {
+.volume-buton,
+.stop-button {
   padding: 0 !important;
 }
 

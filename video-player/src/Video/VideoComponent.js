@@ -97,7 +97,7 @@ export class VideoComponent extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid wrapper">
         <div className="row">
           <video
             ref="vidRef"
@@ -110,39 +110,41 @@ export class VideoComponent extends React.Component {
             <source src={source} type="video/mp4" />
           </video>
         </div>
-        <div className="col-md-11 timer">
-          <ProgressBarComponent
-            played={this.state.played}
-            maxWidth={this.state.duration}
-            progress={this.state.currentTime}
-            onSelectTime={this.selectTime.bind(this)}
-            timer={
-              <span>
-                {Math.round(this.state.currentTime)} : {this.state.duration} s
-              </span>
-            }
-          />
+        <div className="row bar justify-content">
+          <div className="col-md-12 timer">
+            <ProgressBarComponent
+              played={this.state.played}
+              maxWidth={this.state.duration}
+              progress={this.state.currentTime}
+              onSelectTime={this.selectTime.bind(this)}
+              timer={
+                <span>
+                  {Math.round(this.state.currentTime)} : {this.state.duration} s
+                </span>
+              }
+            />
+          </div>
         </div>
         <div className="row controls">
-          <div className="col-sm-1 play-button">
+          <div className="col-sm-2 play-button">
             <PlayComponent
               played={this.state.played}
               onPlayPauseVideo={this.playPauseVideo.bind(this)}
             />
           </div>
-          <div className="col-sm-1 stop-button">
+          <div className="col-sm-2 stop-button">
             <StopComponent
               stopped={this.state.played}
               onStopVideo={this.stopVideo.bind(this)}
             />
           </div>
-          <div className="col-sm-1 repeat-button">
+          <div className="col-sm-2 repeat-button">
             <RepeatComponent
               repeat={this.state.repeat}
               onRepeat={this.repeatVideo.bind(this)}
             />
           </div>
-          <div className="col-sm-1 volume-buton">
+          <div className="col-sm-2 volume-buton">
             <VolumeComponent
               onVolume={this.changeVolume.bind(this)}
               volume={this.state.volume}
