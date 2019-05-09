@@ -5,6 +5,7 @@ import { PlayComponent } from "./Controls/PlayComponent";
 import { RepeatComponent } from "./Controls/RepeatComponent";
 import { VolumeComponent } from "./Controls/VolumeComponent";
 import { StopComponent } from "./Controls/StopComponent";
+import { RateComponent } from "./Controls/RateComponent";
 
 export class VideoComponent extends React.Component {
   constructor(props) {
@@ -15,7 +16,9 @@ export class VideoComponent extends React.Component {
       stopProgress: false,
       duration: 0,
       currentTime: 0,
-      volume: 50
+      volume: 50,
+      rate: [1.0, 2.0, 0.5],
+      currentRateIndex: 0
     };
 
     this.playPauseVideo = this.playPauseVideo.bind(this);
@@ -25,6 +28,7 @@ export class VideoComponent extends React.Component {
     this.selectTime = this.selectTime.bind(this);
     this.endVideo = this.endVideo.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
+    this.changeRate = this.changeRate.bind(this);
   }
 
   // get current video time
@@ -95,6 +99,15 @@ export class VideoComponent extends React.Component {
     }
   }
 
+  changeRate(index) {
+    console.log(index);
+    console.log(this.state.rate[index]);
+    this.setState({
+      rate: this.state.rate[index],
+      currentRateIndex: index
+    });
+  }
+
   render() {
     return (
       <div className="container-fluid wrapper">
@@ -144,10 +157,17 @@ export class VideoComponent extends React.Component {
               onRepeat={this.repeatVideo.bind(this)}
             />
           </div>
-          <div className="col-sm-2 volume-buton">
+          <div className="col-sm-2 volume-button">
             <VolumeComponent
               onVolume={this.changeVolume.bind(this)}
               volume={this.state.volume}
+            />
+          </div>
+          <div className="col-sm-2 rate-button">
+            <RateComponent
+              onRate={this.changeRate.bind(this)}
+              rate={this.state.rate}
+              index={this.state.currentRateIndex}
             />
           </div>
         </div>

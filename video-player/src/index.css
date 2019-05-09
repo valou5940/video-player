@@ -40,7 +40,8 @@ button {
 .play-button,
 .repeat-button,
 .volume-buton,
-.stop-button {
+.stop-button,
+.rate-button {
   padding: 0 !important;
 }
 
