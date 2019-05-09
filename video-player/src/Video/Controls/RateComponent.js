@@ -18,7 +18,7 @@ export class RateComponent extends React.Component {
   render() {
     return (
       <button onClick={this.handleRate}>
-        <i className="fas fa-angle-double-right fa-4x" />
+        <i className="fas fa-angle-double-right fa-1x" />
       </button>
     );
   }

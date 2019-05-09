@@ -48,8 +48,8 @@ export class VolumeComponent extends React.Component {
             <i
               className={
                 this.state.muted
-                  ? "fas fa-volume-mute fa-4x"
-                  : "fas fa-volume-up fa-4x"
+                  ? "fas fa-volume-mute fa-1x"
+                  : "fas fa-volume-up fa-1x"
               }
             />
           </button>

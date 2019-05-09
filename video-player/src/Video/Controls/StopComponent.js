@@ -14,7 +14,7 @@ export class StopComponent extends React.Component {
   render() {
     return (
       <button onClick={this.handleStop}>
-        <i className="fas fa-stop fa-4x" />
+        <i className="fas fa-stop fa-1x" />
       </button>
     );
   }

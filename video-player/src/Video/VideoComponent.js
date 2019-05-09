@@ -137,8 +137,51 @@ export class VideoComponent extends React.Component {
             <source src={source} type="video/mp4" />
           </video>
         </div>
-        <div className="row bar justify-content">
-          <div className="col-md-12 timer">
+        <div className="row bar">
+          <div className="col-2">
+            <div className="row controls">
+              <div className="col-4 play-button">
+                <PlayComponent
+                  played={this.state.played}
+                  onPlayPauseVideo={this.playPauseVideo.bind(this)}
+                />
+              </div>
+              <div className="col-4 stop-button">
+                <StopComponent
+                  stopped={this.state.played}
+                  onStopVideo={this.stopVideo.bind(this)}
+                />
+              </div>
+              <div className="col-4 repeat-button">
+                <RepeatComponent
+                  repeat={this.state.repeat}
+                  onRepeat={this.repeatVideo.bind(this)}
+                />
+              </div>
+            </div>
+            <div className="row controls">
+              <div className="col-4 rate-button">
+                <RateComponent
+                  onRate={this.changeRate.bind(this)}
+                  rate={this.state.rate}
+                  index={this.state.currentRateIndex}
+                />
+              </div>
+              <div className="col-4 volume-button">
+                <VolumeComponent
+                  onVolume={this.changeVolume.bind(this)}
+                  volume={this.state.volume}
+                />
+              </div>
+              <div className="col-4 fullscreen-button">
+                <FullScreenComponent
+                  onFullscreen={this.setFullscreen.bind(this)}
+                  fullscreen={this.state.fullscreen}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-9 timer">
             <ProgressBarComponent
               played={this.state.played}
               maxWidth={this.state.duration}
@@ -152,45 +195,7 @@ export class VideoComponent extends React.Component {
             />
           </div>
         </div>
-        <div className="row controls">
-          <div className="col-sm-2 play-button">
-            <PlayComponent
-              played={this.state.played}
-              onPlayPauseVideo={this.playPauseVideo.bind(this)}
-            />
-          </div>
-          <div className="col-sm-2 rate-button">
-            <RateComponent
-              onRate={this.changeRate.bind(this)}
-              rate={this.state.rate}
-              index={this.state.currentRateIndex}
-            />
-          </div>
-          <div className="col-sm-2 stop-button">
-            <StopComponent
-              stopped={this.state.played}
-              onStopVideo={this.stopVideo.bind(this)}
-            />
-          </div>
-          <div className="col-sm-2 repeat-button">
-            <RepeatComponent
-              repeat={this.state.repeat}
-              onRepeat={this.repeatVideo.bind(this)}
-            />
-          </div>
-          <div className="col-sm-2 volume-button">
-            <VolumeComponent
-              onVolume={this.changeVolume.bind(this)}
-              volume={this.state.volume}
-            />
-          </div>
-          <div className="col-sm-2 fullscrean-button">
-            <FullScreenComponent
-              onFullscreen={this.setFullscreen.bind(this)}
-              fullscreen={this.state.fullscreen}
-            />
-          </div>
-        </div>
+        {/* <div className="row controls" /> */}
       </div>
     );
   }

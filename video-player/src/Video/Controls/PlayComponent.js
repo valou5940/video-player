@@ -12,8 +12,8 @@ export class PlayComponent extends React.Component {
   }
 
   render() {
-    const playButton = <i className="fas fa-play-circle fa-4x" />;
-    const pauseButton = <i className="fas fa-pause-circle fa-4x" />;
+    const playButton = <i className="fas fa-play-circle fa-1x" />;
+    const pauseButton = <i className="fas fa-pause-circle fa-1x" />;
     return (
       <button onClick={this.handlePlayPause}>
         {this.props.played ? pauseButton : playButton}

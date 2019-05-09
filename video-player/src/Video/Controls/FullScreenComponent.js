@@ -14,7 +14,7 @@ export class FullScreenComponent extends React.Component {
   render() {
     return (
       <button onClick={this.handleFullscreen}>
-        <i className="fas fa-expand fa-4x" />
+        <i className="fas fa-expand fa-1x" />
       </button>
     );
   }
