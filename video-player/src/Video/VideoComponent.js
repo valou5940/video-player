@@ -6,6 +6,7 @@ import { RepeatComponent } from "./Controls/RepeatComponent";
 import { VolumeComponent } from "./Controls/VolumeComponent";
 import { StopComponent } from "./Controls/StopComponent";
 import { RateComponent } from "./Controls/RateComponent";
+import { FullScreenComponent } from "./Controls/FullScreenComponent";
 
 export class VideoComponent extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export class VideoComponent extends React.Component {
       repeat: false,
       played: false,
       stopProgress: false,
+      fullscreen: false,
       duration: 0,
       currentTime: 0,
       volume: 50,
@@ -29,6 +31,7 @@ export class VideoComponent extends React.Component {
     this.endVideo = this.endVideo.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
     this.changeRate = this.changeRate.bind(this);
+    this.setFullscreen = this.setFullscreen.bind(this);
   }
 
   // get current video time
@@ -107,9 +110,21 @@ export class VideoComponent extends React.Component {
     this.refs.vidRef.playbackRate = this.state.rate[index];
   }
 
+  //set or not fullscreen mode
+  setFullscreen(fullscreen) {
+    this.setState({
+      fullscreen: fullscreen
+    });
+    console.log(this.state.fullscreen);
+  }
+
   render() {
+    const wrapperStyle = this.state.fullscreen
+      ? { width: "100%", height: "100%" }
+      : { width: "50%", height: "50%" };
+
     return (
-      <div className="container-fluid wrapper">
+      <div className="container-fluid wrapper" style={wrapperStyle}>
         <div className="row">
           <video
             ref="vidRef"
@@ -117,7 +132,7 @@ export class VideoComponent extends React.Component {
             onEnded={this.endVideo}
             onLoadedMetadata={this.getDuration}
             width={"100%"}
-            height={600}
+            height={"100%"}
           >
             <source src={source} type="video/mp4" />
           </video>
@@ -144,6 +159,13 @@ export class VideoComponent extends React.Component {
               onPlayPauseVideo={this.playPauseVideo.bind(this)}
             />
           </div>
+          <div className="col-sm-2 rate-button">
+            <RateComponent
+              onRate={this.changeRate.bind(this)}
+              rate={this.state.rate}
+              index={this.state.currentRateIndex}
+            />
+          </div>
           <div className="col-sm-2 stop-button">
             <StopComponent
               stopped={this.state.played}
@@ -162,11 +184,10 @@ export class VideoComponent extends React.Component {
               volume={this.state.volume}
             />
           </div>
-          <div className="col-sm-2 rate-button">
-            <RateComponent
-              onRate={this.changeRate.bind(this)}
-              rate={this.state.rate}
-              index={this.state.currentRateIndex}
+          <div className="col-sm-2 fullscrean-button">
+            <FullScreenComponent
+              onFullscreen={this.setFullscreen.bind(this)}
+              fullscreen={this.state.fullscreen}
             />
           </div>
         </div>
