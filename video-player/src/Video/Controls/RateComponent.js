@@ -8,7 +8,7 @@ export class RateComponent extends React.Component {
   }
 
   handleRate() {
-    if (this.props.index + 1 > this.props.rate.length) {
+    if (this.props.rate[this.props.index + 1] === undefined) {
       this.props.onRate(0);
     } else {
       this.props.onRate(this.props.index + 1);
@@ -18,7 +18,7 @@ export class RateComponent extends React.Component {
   render() {
     return (
       <button onClick={this.handleRate}>
-        X {this.props.rate[this.props.index]}
+        <i className="fas fa-angle-double-right fa-4x" />
       </button>
     );
   }

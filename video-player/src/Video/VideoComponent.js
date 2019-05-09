@@ -99,13 +99,12 @@ export class VideoComponent extends React.Component {
     }
   }
 
+  // change default playback rate
   changeRate(index) {
-    console.log(index);
-    console.log(this.state.rate[index]);
     this.setState({
-      rate: this.state.rate[index],
       currentRateIndex: index
     });
+    this.refs.vidRef.playbackRate = this.state.rate[index];
   }
 
   render() {

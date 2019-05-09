@@ -39,10 +39,15 @@ button {
 
 .play-button,
 .repeat-button,
-.volume-buton,
+.volume-button,
 .stop-button,
 .rate-button {
   padding: 0 !important;
+}
+
+.rate {
+  color: rgb(114, 41, 209);
+  font-size: 60px;
 }
 
 .timer {
@@ -54,6 +59,7 @@ button {
   padding: 0 !important;
   text-align: center;
 }
+
 input[type="range"] {
   -webkit-appearance: none;
   width: 90%;
