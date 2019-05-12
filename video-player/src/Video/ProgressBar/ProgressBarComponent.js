@@ -28,7 +28,7 @@ export class ProgressBarComponent extends React.Component {
     const maxWidth = this.props.maxWidth;
 
     return (
-      <div className="col-sm-12">
+      <div className="col-12">
         <input
           type="range"
           min="0"

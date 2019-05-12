@@ -181,7 +181,7 @@ export class VideoComponent extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-9 timer">
+          <div className="col-10 timer">
             <ProgressBarComponent
               played={this.state.played}
               maxWidth={this.state.duration}
